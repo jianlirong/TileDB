@@ -47,6 +47,7 @@ set(TILEDB_TEST_SOURCES
   src/unit-capi-consistency.cc
   src/unit-capi-consolidation.cc
   src/unit-capi-dense_array.cc
+  src/unit-capi-dense_neg.cc
   src/unit-capi-dense_vector.cc
   src/unit-capi-error.cc
   src/unit-capi-incomplete.cc
