@@ -939,12 +939,16 @@ void Domain::compute_cell_num_per_tile() {
       compute_cell_num_per_tile<uint64_t>();
       break;
     default:
-      assert(0);
+      return;
   }
 }
 
 template <class T>
 void Domain::compute_cell_num_per_tile() {
+  // Applicable only to integer domains
+  if (!std::numeric_limits<T>::is_integer)
+    return;
+
   // Applicable only to non-NULL space tiles
   if (tile_extents_ == nullptr)
     return;
