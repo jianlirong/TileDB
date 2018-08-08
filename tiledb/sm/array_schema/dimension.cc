@@ -447,7 +447,9 @@ Status Dimension::check_tile_extent() const {
       bool exceeds =
           (upper_floor >
            std::numeric_limits<uint64_t>::max() - (*tile_extent - 1));
-      exceeds = (exceeds || upper_floor > std::numeric_limits<T>::max());
+      exceeds =
+          (exceeds ||
+           uint64_t(upper_floor) > uint64_t(std::numeric_limits<T>::max()));
       if (exceeds)
         return LOG_STATUS(Status::DimensionError(
             "Tile extent check failed; domain max expanded to multiple of tile "
