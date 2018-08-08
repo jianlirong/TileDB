@@ -541,11 +541,6 @@ void DenseNegFx::read_dense_array_col(const std::string& path) {
   rc = tiledb_query_finalize(ctx_, query);
   REQUIRE(rc == TILEDB_OK);
 
-  std::cout << a_size << "\n\n";
-  for (int i = 0; i < 16; ++i)
-    std::cout << a[i] << " "
-              << "\n";
-
   int a_c[] = {1, 3, 9, 11, 20, 40, 100, 120, 50, 70, 130, 150, 6, 8, 140, 160};
   CHECK(a_size == sizeof(a_c));
   CHECK(!memcmp(a, a_c, sizeof(a_c)));
@@ -585,8 +580,8 @@ TEST_CASE_METHOD(
   write_dense_array_global(vector_name);
   write_dense_array_row(vector_name);
   write_dense_array_col(vector_name);
-//  read_dense_array_global(vector_name);
-//  read_dense_array_row(vector_name);
+  read_dense_array_global(vector_name);
+  read_dense_array_row(vector_name);
   read_dense_array_col(vector_name);
 
   remove_temp_dir(FILE_URI_PREFIX + FILE_TEMP_DIR);
